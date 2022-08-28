@@ -1,0 +1,16 @@
+1) Write a program in java to initialize an integer value n and compute 4096n , (1/1024)n using shift operator.
+
+import java.util.*;
+
+class Question1 {
+    public static void main(String args[])
+    {
+        System.out.println("Enter an integer value :");
+        Scanner obc= new Scanner(System.in);
+        long int1 = obc.nextLong();
+        System.out.print("Using << operator : ");
+        System.out.println(int1<<12);
+        System.out.print("Using >> operator : ");
+        System.out.println(int1>>10);
+    }
+}
