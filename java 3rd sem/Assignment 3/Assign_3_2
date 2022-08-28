@@ -1,0 +1,67 @@
+2) Define a class Battery having data field: level which indicate its energy level.
+When an object is instantiated it has 100 units battery level. The class must
+implement the following methods:
+• A default constructor
+• showLevel() method to show the current battery level.
+• sendMsg() method is used to consume 2 units of battery on each call
+• recvMsg() method is used to consume 1 unit of battery on each call
+• compute() method consumes 1.5 unit of battery on each call
+• recharge(minutes) method update the battery level , 1 unit per 2 minutes.
+
+import java.util.Scanner;
+public class Assign_3_2{
+    private float bl;
+    public Assign_3_2() {
+        System.out.println("This is a Default constructor");
+        bl = 100f;
+    }
+    public void showLevel() {
+        System.out.println("Battery level is: "+bl);
+    }
+    public void sendMsg() {
+        bl -= 2;
+    }
+    public void recvMsg() {
+        bl -= 1;
+    }
+    public void compute() {
+        bl -= (1.5);
+    }
+    public void recharge(float min) {
+        float m = min/2;
+        bl += m;
+    }
+    public static void main(String[] args) {
+        Assign_3_2 obj = new Assign_3_2();
+        int t = 10;
+        while(t > 0) {
+            System.out.print("1. Show battery level\n2. Send message\n3. Receive Message.");
+            System.out.print("\n4. Compute.\n5. Recharge\n6. Exit\n");
+            Scanner in = new Scanner(System.in);
+            System.out.print("Enter your choice: ");
+            int c = in.nextInt();
+            switch(c) {
+                case 1:
+                    obj.showLevel();
+                    break;
+                case 2:
+                    obj.sendMsg();
+                    break;
+                case 3:
+                    obj.recvMsg();
+                    break;
+                case 4:
+                    obj.compute();
+                    break;
+                case 5:
+                    System.out.print("Enter the amount of minute you plug the device: ");
+                    int min = in.nextInt();
+                    obj.recharge(c);
+                    break;
+                case 6:
+                    System.exit(0);
+                    break;
+            }
+        }
+    }
+}
