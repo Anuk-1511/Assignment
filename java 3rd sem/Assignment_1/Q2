@@ -1,0 +1,26 @@
+2) Write a java program to apply mod operation for each entry and display multiplication table of modulo n. The example for multiplication table modulo 4 is given below:
+                                              
+import java.util.Scanner;
+public class Q2 {
+    public static void mod(int n){
+        for (int i=0; i<n; i++){
+            System.out.print(" "+ i);
+        }
+        System.out.println();
+        for(int i=0; i<n; i++) {
+            System.out.print(i +" ");
+            for (int j = 0; j < n; j++){
+                int modulo = (i * j) % n;
+                System.out.print(modulo +" ");
+            }
+            System.out.println();
+        }
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n;
+        System.out.println("Enter the number:");
+        n = sc.nextInt();
+       mod(n);  
+       } 
+       }
