@@ -1,0 +1,32 @@
+import java.util.*;
+class UserVerySmallNumException extends Exception {
+    public String toString() {
+        return "Very Small Num Exception encountered ";
+    }
+}
+public class Assign_5_q2 {
+    static float divideFloat(float a, float b) throws UserVerySmallNumException{
+        if (a/b <= 0.00001){
+            throw new UserVerySmallNumException();
+        }
+        return a/b;
+    }
+
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+
+        float a, b;
+        System.out.println("Please enter numerator: ");
+        a = sc.nextInt();
+        System.out.println("Please enter denominator: ");
+        b = sc.nextInt();
+
+        float result = 0;
+        try{
+            result = divideFloat(a, b);
+            System.out.println("Result: "+result);
+        } catch (UserVerySmallNumException e) {
+            System.out.println(e.toString());
+        }
+    }
+}
