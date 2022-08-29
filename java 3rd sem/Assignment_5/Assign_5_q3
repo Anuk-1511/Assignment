@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+
+    class UserNumericString extends Exception {
+        public String toString() {
+            return "numeric sub string found ";
+        }
+    }
+    public class Assign_5_q3 {
+        static boolean numstring(String s) throws UserNumericString {
+           for(int i=0; i<s.length();i++)
+           {
+               if(s.charAt(i) >= '0' && s.charAt(i) <= '9'){
+                   throw new UserNumericString();
+               }
+           }
+            return true;
+        }
+
+        public static void main(String[] args){
+            Scanner sc = new Scanner(System.in);
+
+            String s;
+            System.out.println("Enter string: ");
+            s= sc.nextLine();
+
+            try{
+                if(numstring(s)){
+                System.out.println("String : "+s);}
+            } catch (UserNumericString e) {
+                System.out.println(e.toString());
+            }
+        }
+
+}
