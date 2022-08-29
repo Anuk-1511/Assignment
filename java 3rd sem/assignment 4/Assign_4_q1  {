@@ -1,0 +1,100 @@
+import java.util.*;
+
+class BUS{
+    private int regNo, modelNo, capacity;
+    BUS(int regno, int model, int capacity) {
+        this.regNo = regno;
+        this.modelNo = model;
+        this.capacity = capacity;
+
+    }
+    public void  showBusDetails() {
+        System.out.println("Bua Reg no: " + regNo);
+        System.out.println("Bus Model no: "+ modelNo);
+        System.out.println("Bus total capacity: "+capacity);
+    }
+}
+class PublicBus extends BUS{
+    private String owner, from, to;
+    private int dep, ariv;
+    PublicBus(int regno, int model, int capacity, int d_time, int a_time, String owner, String from, String to) {
+        super(regno, model, capacity);
+        this.owner = owner;
+        this.from = from;
+        this.to = to;
+        this.dep = d_time;
+        this.ariv = a_time;
+    }
+    public void  showBusDetails() {
+        super.showBusDetails();
+        System.out.println("Bus owner name: " + owner);
+        System.out.println("Bus travail from :" + from + " to " + to);
+        System.out.println("Bus departure time: " + dep+"PM" + " and arrival time: " + ariv+"AM");
+    }
+}
+class LuxuryPublicBus extends PublicBus {
+    private boolean isAC, isWifi;
+    private int noOfSlepperSeat;
+    LuxuryPublicBus(int regno, int model, int capacity, int d_time, int a_time,
+                    int noOfSeat, String owner, String from, String to,
+                    Boolean isAC, Boolean isWifi) {
+
+        super(regno, model, capacity, d_time, a_time, owner, from, to);
+        this.isAC = isAC;
+        this.isWifi = isWifi;
+        this.noOfSlepperSeat = noOfSeat;
+    }
+    public void  showBusDetails() {
+        super.showBusDetails();
+        System.out.println("AC : " + isAC);
+        System.out.println("WIFI: "+isWifi);
+        System.out.println("Total no. of sleeper seat is: "+noOfSlepperSeat);
+    }
+}
+public class Assign_4_q1  {
+    public static void main(String[] agrs){
+        int regno, model, capacity, d_time, a_time, noOfSeat;
+        String owner, from, to;
+        boolean isAC, isWifi;
+        Scanner sc = new Scanner(System.in);
+
+
+        System.out.println("Enter bus reg no:");
+        regno = sc.nextInt();
+
+        System.out.println("Enter the bus model no:");
+        model = sc.nextInt();
+
+        System.out.println("Enter the total seat capacity: ");
+        capacity = sc.nextInt();
+
+        System.out.println("Enter the departure time: ");
+        d_time = sc.nextInt();
+
+        System.out.println("Enter the arrival time: ");
+        a_time = sc.nextInt();
+
+        System.out.println("Enter the total sleeper seat no.");
+        noOfSeat = sc.nextInt();
+
+        System.out.println("AC available true/false");
+        isAC = sc.nextBoolean();
+
+        System.out.println("Wifi available true/false");
+        isWifi = sc.nextBoolean();
+
+        System.out.println("Enter bus owner name: ");
+        owner = sc.next();
+
+        System.out.println("Enter bus source city:");
+        from = sc.next();
+
+        System.out.println("Enter bus destination city: ");
+        to = sc.next();
+
+
+        LuxuryPublicBus ob = new LuxuryPublicBus(regno, model, capacity, d_time, a_time, noOfSeat, owner, from, to, isAC, isWifi);
+        ob.showBusDetails();
+
+    }
+}
