@@ -1,0 +1,43 @@
+import java.util.*;
+class BUS{
+    BUS() {
+        System.out.println("Bus");
+    }
+    void callme() {
+        System.out.println("Inside bus callme method");
+    }
+}
+class PublicBus extends BUS{
+    PublicBus() {
+        System.out.println("PublicBus");
+    }
+    void callme() {
+        System.out.println("Inside PublicBus callme method");
+    }
+}
+class LuxuryPublicBus extends PublicBus {
+    LuxuryPublicBus() {
+        super();
+        System.out.println("LuxuryPublicBus");
+    }
+    void callme() {
+        System.out.println("Inside LuxuryPublicBus callme method");
+    }
+}
+public class Assign_4_q3 {
+    public static void main(String[] agrs){
+        LuxuryPublicBus ob = new LuxuryPublicBus();
+        System.out.println("end of the use of super keyword ...");
+        System.out.println("use of Dynamic Dispatch ...");
+        BUS a = new BUS(); // object of type BUS
+        PublicBus b = new PublicBus(); // object of type PublicBus
+        LuxuryPublicBus c = new LuxuryPublicBus(); // object of type LuxuryPublicBus
+        BUS r; // obtain a reference of type Bus
+        r = a; // r refers to an Bus object
+        r.callme(); // calls Bus's version of callme
+        r = b; // r refers to a PublicBus object
+        r.callme(); // calls PublicBus's version of callme
+        r = c; // r refers to a LuxuryPublicBus object
+        r.callme(); // calls LuxuryPublicBus's version of callme
+    }  
+    }
