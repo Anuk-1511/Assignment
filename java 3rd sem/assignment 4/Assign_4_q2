@@ -1,0 +1,127 @@
+import java.util.*;
+abstract class Account {
+    long accno;
+    String name;
+    double bal;
+    abstract void displayBalance();
+    abstract void deposite(long money);
+    abstract void withdraw(long money);
+}
+class SavingAccount extends Account {
+    private String type;
+    private double rate;
+    SavingAccount(long accno, String name, double bal, String type, double rate) {
+        this.accno = accno;
+        this.name = name;
+        this.bal = bal;
+        this.type = type;
+        this.rate = rate;
+    }
+    void displayBalance() {
+        System.out.println("Balance : " + bal);
+    }
+    void deposite(long money) {
+        bal += money;
+
+    }
+    void withdraw(long money) {
+        bal -= money;
+
+    }
+    public void  calculateIntrest(int period) {
+        double ans;
+        ans = (bal * rate * period) / 100;
+        System.out.println("Intrest : " + ans);
+
+    }
+}
+class CurrentAccount extends Account {
+    private String type;
+    private double rate;
+    CurrentAccount(long accno, String name, double bal, String type, double rate) {
+        this.accno = accno;
+        this.name = name;
+        this.bal = bal;
+        this.type = type;
+        this.rate = rate;
+    }
+    void displayBalance() {
+        System.out.println("Balance : " + bal);
+    }
+    void deposite(long money) {
+        bal += money;
+
+    }
+    void withdraw(long money) {
+        bal -= money;
+
+    }
+    public void  calculateIntrest(int period) {
+        double ans;
+        ans = (bal * rate * period) / 100;
+        System.out.println("Intrest : " + ans);
+
+    }
+}
+
+public class Assign_4_q2 {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter account number: ");
+        long accno = sc.nextLong();
+
+        System.out.println("Enter account holder name: ");
+        String name = sc.next();
+
+        System.out.println("Enter account type (Savings/Current):");
+        String type = sc.next();
+
+        System.out.println("Enter total amount: ");
+        double bal = sc.nextDouble();
+
+        System.out.println("Enter Interest rate: ");
+        double roi = sc.nextDouble();
+
+        SavingAccount ob = new SavingAccount(accno, name, bal, type, roi);
+        // ob.displayBalance();
+
+        System.out.println("1. for display balance");
+        System.out.println("2.for deposite");
+
+        System.out.println("3. for withdraw");
+
+        System.out.println("4. for calculateIntrest");
+        System.out.println("5. Exit");
+        boolean t = true;
+
+        while (t) {
+            System.out.println("Enter your choice");
+            int ch = sc.nextInt();
+            switch (ch) {
+                case 1: ob.displayBalance();
+                    break;
+                case 2: System.out.println("Enter amount");
+                    int amt1 = sc.nextInt();
+                    ob.deposite(amt1);
+                    ob.displayBalance();
+                    break;
+                case 3: System.out.println("Enter amount");
+                    int amt2 = sc.nextInt();
+                    ob.withdraw(amt2);
+                    ob.displayBalance();
+                    break;
+                case 4: System.out.println("Enter time period");
+                    int p = sc.nextInt();
+
+
+                    ob.calculateIntrest(p);
+                    break;
+                case 5: t = false;
+                    break;
+                default: System.out.println("Invalid choice");
+
+            }
+        }
+    }
+}
